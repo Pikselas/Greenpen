@@ -1,0 +1,122 @@
+body
+{
+    background-color: #090e11;
+}
+.TopLogoSection , .BottomLogoSection
+{
+    position: absolute;
+    padding-left: 20px;
+    padding-right: 20px; 
+    transition: .9s ease-out;
+    background-color: #2ae66b;
+    width: 150px;
+}
+.TopLogoSection
+{
+    top: 0%;
+    left: 0%;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px; 
+}
+.BottomLogoSection
+{
+    bottom: 0%;
+    right: 0%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.TopLogoSection h1 , .BottomLogoSection h1
+{
+    text-align: center;
+    color: white;
+    font-size: x-large;
+    font-weight: 600;
+    font-family:fantasy;
+    transition: all 2s ease-in-out;
+}
+.MiddleEntrySection
+{
+    color: white;
+    font-size: x-large;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    height: 70%;
+    width: 70%;
+    background-color: #00ff93eb;
+    border-bottom-right-radius : 100px;
+    border-top-left-radius : 100px;
+}
+.MiddleEntrySection div
+{
+    position: absolute;
+    background-color: #090e11;
+    padding: 20px;
+}
+.MiddleEntrySection div button
+{
+   padding: 10px;
+   cursor: pointer;
+   border-radius: 5px;
+   font-weight: 500;
+   font-family:'Courier New', Courier, monospace;
+}
+.LogInSection
+{
+    width: 50%;
+    bottom: 20%;
+    left: 0%;
+    text-align: end;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius:20px;
+}
+.SignUpSection
+{
+    width: 50%;
+    top: 20%;
+    right: 0%;
+    text-align: start;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius:20px;
+}
+.SignUpSection button
+{
+    transition: all 0.5s ease;
+    background-color: #090e11;
+    color: white;
+    border: 5px #595cfffd solid;
+}
+.LogInSection button
+{
+    transition: all 0.5s ease;
+    background-color: #090e11;
+    color: white;
+    border: 5px #17db17fd solid;
+}
+.SignUpSection button:hover
+{
+    background-color: #595cfffd ;
+}
+.LogInSection button:hover
+{
+    background-color: #17db17fd  ;
+}
+.TopLogoSection:hover ,.BottomLogoSection:hover
+{
+    width: 300px;
+}
+.TopLogoSection:hover h1
+{
+    text-align: end;
+}
+.BottomLogoSection:hover h1
+{
+    text-align: start;
+}
+.MiddleEntrySection div button:hover
+{
+    font-weight: 800;
+}

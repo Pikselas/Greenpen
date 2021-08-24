@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenpen</title>
+    <link rel="stylesheet" href="../styles/dashboard.css"/>
+</head>
+<body>
+    <h1 id="Logo"><ins>Greenpen</ins></h1>
+
+     <div id="ProjectList" class="ProjectList">
+        No projects
+     </div>
+
+    <div class="ToolSection">
+        <select autocomplete="off">
+            <option value="0" selected onclick="OptionSelectHandaler('NOTHING')">Do nothing</option>
+            <option value="1" onclick="OptionSelectHandaler('SELECT-FILE')">Select File</option>
+            <option value="2" onclick="OptionSelectHandaler('RENAME-FILE')">Rename File</option>
+            <option value="3" onclick="OptionSelectHandaler('DELETE-FILE')">Delete File</option>
+            <option value="4" onclick="OptionSelectHandaler('SELECT-FOLDER')">Select Folder</option>
+            <option value="5" onclick="OptionSelectHandaler('RENAME-FOLDER')">Rename Folder</option>
+            <option value="6" onclick="OptionSelectHandaler('DELETE-FOLDER')">Delete Folder</option>
+        </select>
+        <button onclick="CreateFolder()">Create Folder</button>
+        <label for="FileList">Add File</label>
+        <input autocomplete="off" type="file" id="FileList" multiple/>
+        <br/>
+        <button onclick="CreateProject()">Create Project</button>
+    </div>
+
+    <div id = "FileSection" SizeShow = "400" SizeHide = "30" SizeMax = "700" SizeMin = "30">
+      
+        <div id="Lst" class="Lists"></div>
+        <div id="SelectedLst" class="Lists">
+            <div class="FolderArea">
+                <div class="FolderTitle">SELECTED FOLDER</div>
+                <div class="FolderContents"></div>
+            </div>
+            <div class="FolderArea">
+                <div class="FolderTitle">SELECTED FILES</div>
+                <div class="FolderContents"></div>
+            </div>
+        </div>
+       
+        <div class="Actions">
+            <button id="Incrs">+</button>
+            <button id="Toggle">></button>
+            <button id="Dcrs">-</button>
+       </div>
+    
+    </div>
+    <script src="../scripts/functions.js"></script>
+    <script src="../scripts/dashboard.js"></script>
+</body>
+</html>

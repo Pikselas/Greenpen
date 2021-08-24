@@ -1,0 +1,38 @@
+*give an destroy all cookie fucntion for loogging out if not authorised
+*project configuration file will be only once
+*there will be multiple video and image elements
+*project.json structure should look like =>
+                    {
+                        PROJECT_NAME : "NAME",
+                        FILE_LISTS   : {
+                                    VIDEO_LIST : {
+                                            id1 : {path:"",name:""},
+                                            id2 : {path:"",name:""},
+                                            id3 : {path:"",name:""},...
+                                            },
+                                    IMAGE_LIST_S : {
+                                                    id1:{
+                                                            {id:"",path:"",name:""},
+                                                            {id:"",path:"",name:""},
+                                                            {id:"",path:"",name:""},....
+                                                        },
+                                                    id2:{
+                                                          {id:"",path:"",name:""},
+                                                          {id:"",path:"",name:""},
+                                                          {id:"",path:"",name:""},....
+                                                        },
+                                                },
+                        }
+                       VIDEO_JOINED_LIST : {
+                                    {
+                                      VIDEO_TIMES : [
+                                                        VIDEO_ID1:[],
+                                                        VIDEO_ID2:[],
+                                                    ] ,
+                                      IMAGE_ID_S  : [
+                                                        VIDEO_ID1[[],[],[],....],
+                                                        VIDEO_ID2[[],[],[],....],
+                                                    ]
+                                    }
+                       }
+                    }

@@ -1,0 +1,163 @@
+body
+{
+    background-color: #090e11;
+}
+h1
+{
+    position: absolute;
+    top: 0%;
+    color: rgb(62, 255, 181);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    cursor: pointer;
+}
+#FileSection
+{
+    transition: .5s ease;
+    position: absolute;
+    width: 30px;
+    height: 90%;
+    left: 0px;
+    top: 9%;
+}
+#FileSection .Lists
+{
+    transition: opacity .5s ease-in;
+    height: 50%;
+    width: 92%;
+    background-color: #002444d1;
+    overflow-y:scroll;
+    opacity: 0;
+}
+#FileSection .Actions
+{
+    transition: opacity .2s ease-out;
+    position: absolute;
+    top: 40%;
+    right:0%;
+    opacity: 0;
+}
+#FileSection .Actions button
+{
+    width: 30px;
+    height: 50px;
+    border: none;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    color: rgba(255, 255, 255, 0.808);
+    background-color: #23aa5eab;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    cursor: pointer;
+    display: block;
+}
+#FileSection .Actions button:hover
+{
+    color: white;
+    background-color: #23aa5e;
+}
+#FileSection:hover .Actions
+{
+    opacity: 1;
+}
+.FolderTitle
+{
+    color: rgb(62, 255, 181);
+    text-decoration: underline;
+    font-weight: 600;
+    font-family: Arial;
+    cursor: pointer;
+}
+.FolderContents
+{
+    position: relative;
+    left: 20px;
+    max-width: max-content;
+}
+.FolderFile
+{
+    color: rgb(236, 255, 255);
+    font-size: medium;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+}
+ .FolderTitle:hover
+{
+    color: rgb(238, 240, 240);
+    font-style: italic;
+}
+.FolderFile:hover
+{
+    background-color: #23aa5e;
+    font-style: italic;
+    font-weight:600;
+}
+
+.ToolSection
+{
+    position: absolute;
+    transition: .5s ease;
+    top: 3%;
+    right: 1%;
+    height: 10%;
+    opacity: 0;
+}
+.ToolSection:hover
+{
+    height: 97%;
+    opacity: 1;
+}
+.ToolSection select,.ToolSection button,.ToolSection label
+{
+    background-color: #090e11;
+    border: none;
+    border-bottom: 3px solid #a1ffa1cc;
+    border-left: 3px solid #02fff2da;
+    border-right:3px solid #02fff2c5;
+    padding: 10px;
+    font-size: medium;
+    border-radius: 50px;
+    font-family: monospace;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.856);
+    cursor: pointer;
+    display: block;
+}
+.ToolSection button
+{
+    position: relative;
+    top: 10%;
+    width: 100%;
+    height: 4.5%;
+}
+.ToolSection input[type="file"]
+{
+    display: none;
+}
+.ToolSection label
+{
+    position: absolute;
+    top: 8%;
+    width: 85%;
+    height: 1.5%;
+    text-align: center;
+}
+.ToolSection select:hover,.ToolSection button:hover,.ToolSection label:hover
+{
+    color: white;
+    border-bottom: 3px solid #a1ffa1;
+    border-left: 3px solid #02fff2;
+    border-right:3px solid #02fff2;
+}
+.ProjectList
+{
+    width: 75%;
+    height: 85%;
+    border: 5px dotted #74ffb1c7;
+    color: #02fff2;
+    border-radius: 15px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}

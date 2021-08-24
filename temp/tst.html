@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #testArea
+        {
+            height: 70%;
+            width: 70%;
+            background-color: rgb(4, 9, 27);
+            position: absolute;
+            top: 10%;
+            left: 20%;
+        }
+        #item1,#item2,#item3,#item4,#item5,#item6
+        {
+            transition: .5s ease;
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="testArea" ondragover="onDragOver(event)" ondrop="onDrop(event)">
+         <div id="item1" draggable="true" ondragstart="OnDragStart(event)"></div>
+         <div id="item2" draggable="true" ondragstart="OnDragStart(event)"></div>
+         <div id="item3" draggable="true" ondragstart="OnDragStart(event)"></div>
+         <div id="item4" draggable="true" ondragstart="OnDragStart(event)"></div>
+         <div id="item5" draggable="true" ondragstart="OnDragStart(event)"></div>
+         <div id="item6" draggable="true" ondragstart="OnDragStart(event)"></div>
+    </div>
+    <script>
+        function OnDragStart(ev)
+        {
+            ev.dataTransfer.setData("Item",ev.target.id);
+        }
+        function onDrop(ev)
+        {
+            let Obj = document.getElementById(ev.dataTransfer.getData("Item"));
+            //ev.target.removeChild(Obj);
+            Obj.style.top = ev.layerY + "px";
+            Obj.style.left = ev.layerX + "px";
+            //ev.target.appendChild(Obj);
+            console.log(ev);
+        }
+        function onDragOver(ev)
+        {
+            ev.preventDefault();
+        }
+    </script>
+</body>
+</html>

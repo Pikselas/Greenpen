@@ -1,0 +1,58 @@
+body
+{
+    background-color: mintcream;
+}
+h1
+{
+    position: absolute;
+    top: 0%;
+    color: rgb(62, 255, 181);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    cursor: pointer;
+}
+ div
+{
+    position: absolute;
+    top:35%;
+    left: 40%;
+    width: 20%;
+    display: grid;
+}
+div ins
+{
+    position: relative;
+    padding: 10px;
+    color: rgb(0, 153, 255);
+    font-family: sans-serif;
+    left: 35%;
+    font-weight: 600;
+}
+div input
+{
+    display:block;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(151, 255, 151);
+}
+div input[type = "submit"]
+{
+    background-color: rgba(52, 255, 113, 0.904);
+    border: 2px solid rgb(0, 255, 106);
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    cursor: pointer;
+} 
+div input:focus
+{
+    color: rgb(151, 255, 224);
+    font-weight: 600;
+}
+div input[type = "submit"]:hover
+{
+    background-color: rgb(91, 255, 165);
+}
+div input[type = "submit"]:focus
+{
+    color: white;
+}
