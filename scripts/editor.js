@@ -1,3 +1,13 @@
+function CreateImgDiv()
+{
+    let NewImgDivSec = document.createElement("div");
+    NewImgDivSec.id = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    NewImgDivSec.className = "MainSecChild_IMGDIV";
+    NewImgDivSec.draggable = true;
+    NewImgDivSec.setAttribute("ondragstart","OnDragStart(event)");
+    return NewImgDivSec;
+}
+
 document.body.onload = ()=>
 {
     //verifying user
@@ -19,12 +29,12 @@ document.body.onload = ()=>
             {
                PerformAjaxRequest("GET",{},biscuit["active_project"],"",true,(data)=>{
                     let ProjectObj = JSON.parse(data);
-                    let NewImgDivSec = document.createElement("div");
-                    NewImgDivSec.id = Date.now().toString(36) + Math.random().toString(36).substr(2);
-                    NewImgDivSec.className = "MainSecChild_IMGDIV";
-                    NewImgDivSec.draggable = true;
-                    NewImgDivSec.setAttribute("ondragstart","OnDragStart(event)");
-                    document.getElementById("MainSection").appendChild(NewImgDivSec);
+                    Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"]).forEach((ImageSection)=>{
+                        console.log(ImageSection);
+                        Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSection]).forEach((ImageID)=>{
+                            console.log(ImageID);
+                        })
+                    })
 
                });
             }

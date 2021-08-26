@@ -7,22 +7,14 @@
                     {
                         PROJECT_NAME : "NAME",
                         FILE_LISTS   : {
-                                    VIDEO_LIST : {
-                                            id1 : {path:"",name:""},
-                                            id2 : {path:"",name:""},
-                                            id3 : {path:"",name:""},...
-                                            },
+                                    VIDEO_LIST : [
+                                            id1 : {path:""},
+                                            id2 : {path:""},
+                                            id3 : {path:""},...
+                                                ],
                                     IMAGE_LIST_S : {
-                                                    id1:{
-                                                            {id:"",path:"",name:""},
-                                                            {id:"",path:"",name:""},
-                                                            {id:"",path:"",name:""},....
-                                                        },
-                                                    id2:{
-                                                          {id:"",path:"",name:""},
-                                                          {id:"",path:"",name:""},
-                                                          {id:"",path:"",name:""},....
-                                                        },
+                                                    Section_id1:{ ImgID1 : {path:""},ImgID2 : {path:""} },
+                                                    Section_id2:{ImgID1 : {path:""},ImgID2 : {path:""}},  
                                                 },
                         }
                        VIDEO_JOINED_LIST : {

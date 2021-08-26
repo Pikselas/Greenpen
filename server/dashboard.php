@@ -180,7 +180,8 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
                     if($result["success"])
                     {
                         $VideoList = [];
-                        $ImageList = [];
+                        $NewImgSection = uniqid();
+                        $ImageList = [$NewImgSection => []];
                         if(isset($_GET["FILE_LIST"]))
                         {
                             $fileLSt = json_decode($_GET["FILE_LIST"],true);
@@ -189,11 +190,11 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
 
                                 if($value["type"] == "IMAGE")
                                 {
-                                    array_push($ImageList,["ID"=>uniqid(),"path" => $value["path"] , "name" => $key]);
+                                    $ImageList[$NewImgSection][uniqid()] = ["path" => $value["path"]];
                                 }
                                 elseif($value["type"] == "VIDEO")
                                 {
-                                    array_push($VideoList,["ID"=>uniqid(),"path" => $value["path"] , "name" => $key]);
+                                    $VideoList[uniqid()] = ["path" => $value["path"]];
                                 }
                             }
                         }
