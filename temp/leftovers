@@ -1,4 +1,6 @@
-*give an destroy all cookie fucntion for loogging out if not authorised
+****note => we don't need to resize the image manually just provide width and height on drawImage function
+
+*give an destroy all cookie function for logging out if not authorized
 *project configuration file will be only once
 *there will be multiple video and image elements
 *project.json structure should look like =>
@@ -36,3 +38,6 @@
                                     }
                        }
                     }
+
+* video should be played on canvas
+* every image should be showed on canvas

@@ -210,7 +210,7 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
                                        ];
                         file_put_contents($finalCreationPath,json_encode($NewDataJson));
                     }
-                    setcookie("user_project",$finalCreationPath,0,"/Greenpen");
+                    setcookie("active_project",$finalCreationPath,0,"/Greenpen");
                     echo json_encode($result);
                 break;
        }
