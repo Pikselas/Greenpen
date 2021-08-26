@@ -36,7 +36,7 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
                     {
                         echo json_encode(["success"=>false,"error"=>"path and name didn't provided"]);
                     }
-            break; 
+            break;
            case "DELETE_FILE":
                     if(isset($_GET["FILE_PATH"]))
                     {
@@ -61,7 +61,7 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
                         echo json_encode(["success"=>false,"error"=>"file path didn't provided"]);
                     }
                     break;
-           
+
            case "CREATE_FOLDER":
             if(isset($_GET["FOLDER_PATH"]))
             {
@@ -107,9 +107,9 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
             }
             else
             {
-              echo json_encode(["success"=> false,"error"=>"sufficient data didn't provided"]); 
+              echo json_encode(["success"=> false,"error"=>"sufficient data didn't provided"]);
             }
-            break;  
+            break;
            case "DELETE_FOLDER":
                 if(isset($_GET["FOLDER_PATH"]))
                 {
@@ -186,7 +186,7 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
                             $fileLSt = json_decode($_GET["FILE_LIST"],true);
                             foreach($fileLSt as $key=>$value)
                             {
-                            
+
                                 if($value["type"] == "IMAGE")
                                 {
                                     array_push($ImageList,["ID"=>uniqid(),"path" => $value["path"] , "name" => $key]);
@@ -197,7 +197,7 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
                                 }
                             }
                         }
-                        $NewDataJson = [    
+                        $NewDataJson = [
                                          "PROJECT_NAME" => $_GET["PROJECT_NAME"],
                                          "FILE_LIST_S" => [
                                                             "VIDEO_LIST" => $VideoList,
@@ -210,7 +210,7 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
                                        ];
                         file_put_contents($finalCreationPath,json_encode($NewDataJson));
                     }
-                    setcookie("prj",$finalCreationPath,0,"localhost/Greenpen","localhost",false);
+                    setcookie("user_project",$finalCreationPath,0,"/Greenpen");
                     echo json_encode($result);
                 break;
        }

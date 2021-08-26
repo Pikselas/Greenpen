@@ -324,7 +324,7 @@ function CreateProject()
         data = JSON.parse(data);
         if(data.success)
         {
-            window.location = "editor.html";
+            //window.location = "editor.html";
         }
         else
         {
