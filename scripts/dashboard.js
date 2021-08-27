@@ -65,7 +65,6 @@ function RenameFile(FileDiv)
     {
         FilePath = FilePath + '/' + WillRename;
         let ReqBody = "ACTION_TYPE=RENAME_FILE&FILE_PATH="+File+"&NEW_NAME="+FilePath;
-        console.log(ReqBody);
         PerformAjaxRequest("GET",{},"../server/dashboard.php?"+ReqBody,"",true,(data)=>{
             data = JSON.parse(data);
             if(data.success)
@@ -166,7 +165,6 @@ function DeleteFolder(FolderTitleDiv)
 //triggers when clicked on a file name from file panel
 function OnClickFile(ev)
 {
-    console.log(FileHandaler);
     if(FileHandaler != null)
     {
         FileHandaler(ev.target);
@@ -344,7 +342,6 @@ function CreateProject()
             alert(data.error);
         }
     });
-    console.log(UrlString);
     }   
 }
 

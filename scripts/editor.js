@@ -54,7 +54,6 @@ document.body.onload = ()=>
 }
 function OnDragStart(ev)
 {
-    console.log(ev);
     ev.dataTransfer.setData("Item",ev.target.id);
     ev.dataTransfer.setData("Xpos",ev.layerX);
     ev.dataTransfer.setData("Ypos",ev.layerY);
@@ -64,7 +63,6 @@ function onDrop(ev)
     let Obj = document.getElementById(ev.dataTransfer.getData("Item"));
     Obj.style.top = ev.layerY - Number(ev.dataTransfer.getData("Ypos")) + "px";
     Obj.style.left = ev.layerX - Number(ev.dataTransfer.getData("Xpos")) + "px";
-    console.log(ev);
 }
 function onDragOver(ev)
 {
