@@ -190,11 +190,11 @@ if(isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]))
 
                                 if($value["type"] == "IMAGE")
                                 {
-                                    $ImageList[$NewImgSection][uniqid()] = ["path" => USER_FOLDER . $value["path"]];
+                                    $ImageList[$NewImgSection][uniqid()] = ["path" => $value["path"]];
                                 }
                                 elseif($value["type"] == "VIDEO")
                                 {
-                                    $VideoList[uniqid()] = ["path" => USER_FOLDER . $value["path"]];
+                                    $VideoList[uniqid()] = ["path" => $value["path"]];
                                 }
                             }
                         }

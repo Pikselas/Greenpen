@@ -172,6 +172,18 @@ function OnClickFile(ev)
         FileHandaler(ev.target);
     }
 }
+function OnDblClickFile(ev)
+{
+   let Type = ev.target.attributes.filetype.textContent;
+   let Path = ev.target.attributes.sourcepath.textContent;
+   switch(Type)
+   {
+       case "JSON":
+           document.cookie = `active_project=${USER_FOLDER + Path}`;
+           window.location = "editor.html";
+         break;
+   }
+}
 function OnClickFolder(ev)
 {
     if(FolderHandaler != null)
@@ -196,7 +208,7 @@ function CreateFileNode(name,attributes = {})
                 {
                     ext = "IMAGE";
                 }
-                else if(ext == ".json")
+                else if(ext == "json")
                 {
                     ext = "JSON";
                 }
@@ -211,6 +223,7 @@ function CreateFileNode(name,attributes = {})
         FileNode.setAttribute(value,attributes[value]);
     });
     FileNode.setAttribute("onclick","OnClickFile(event)");
+    FileNode.setAttribute("ondblclick"," OnDblClickFile(event)");
     FileNode.setAttribute("filetype",ext);
     FileNode.className = "FolderFile";
     return FileNode;

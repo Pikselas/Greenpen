@@ -42,7 +42,7 @@ document.body.onload = ()=>
                         Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID]).forEach((ImageID)=>{
                             let NewImg = document.createElement("img");
                             NewImg.id = ImageID;
-                            NewImg.src = ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID][ImageID]["path"];
+                            NewImg.src = USER_FOLDER + ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID][ImageID]["path"];
                             ImageSection.children[0].appendChild(NewImg);
                         })
                     })
