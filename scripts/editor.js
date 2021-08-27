@@ -1,10 +1,17 @@
-function CreateImgDiv()
+function CreateImgDiv(ID)
 {
     let NewImgDivSec = document.createElement("div");
-    NewImgDivSec.id = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    NewImgDivSec.id = ID;
+    NewImgDivSec.style.top = String(Math.floor((Math.random() * 40) + 1)) + "%";
+    NewImgDivSec.style.left = String(Math.floor((Math.random() * 60) + 1)) + "%";
     NewImgDivSec.className = "MainSecChild_IMGDIV";
     NewImgDivSec.draggable = true;
     NewImgDivSec.setAttribute("ondragstart","OnDragStart(event)");
+
+    let NewImgDivContainer = document.createElement("div");
+    
+    NewImgDivSec.appendChild(NewImgDivContainer)
+
     return NewImgDivSec;
 }
 
@@ -29,10 +36,14 @@ document.body.onload = ()=>
             {
                PerformAjaxRequest("GET",{},biscuit["active_project"],"",true,(data)=>{
                     let ProjectObj = JSON.parse(data);
-                    Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"]).forEach((ImageSection)=>{
-                        console.log(ImageSection);
-                        Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSection]).forEach((ImageID)=>{
-                            console.log(ImageID);
+                    Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"]).forEach((ImageSectionID)=>{
+                        let ImageSection = CreateImgDiv(ImageSectionID);
+                        document.getElementById("MainSection").appendChild(ImageSection);
+                        Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID]).forEach((ImageID)=>{
+                            let NewImg = document.createElement("img");
+                            NewImg.id = ImageID;
+                            NewImg.src = ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID][ImageID]["path"];
+                            ImageSection.children[0].appendChild(NewImg);
                         })
                     })
 
