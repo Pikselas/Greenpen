@@ -36,7 +36,7 @@ document.body.onload = ()=>
             {
                PerformAjaxRequest("GET",{},biscuit["active_project"],"",true,(data)=>{
                     let ProjectObj = JSON.parse(data);
-                    Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"]).forEach((ImageSectionID)=>{
+                    Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"]).forEach(async (ImageSectionID)=>{
                         let ImageSection = CreateImgDiv(ImageSectionID);
                         document.getElementById("MainSection").appendChild(ImageSection);
                         Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID]).forEach((ImageID)=>{
@@ -44,8 +44,8 @@ document.body.onload = ()=>
                             NewImg.id = ImageID;
                             NewImg.src = USER_FOLDER + ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID][ImageID]["path"];
                             ImageSection.children[0].appendChild(NewImg);
-                        })
-                    })
+                        });
+                    });
 
                });
             }

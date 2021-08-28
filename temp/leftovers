@@ -31,5 +31,5 @@
                        }
                     }
 
-* video should be played on canvas
-* every image should be showed on canvas
+**add option for presenting video frame on a canvas
+**add option for presenting image on canvas
