@@ -4,7 +4,7 @@ body
 }
 #MainSection .MainSecChild_IMGDIV
 {
-    transition: .5s ease;
+    transition: left .5s,top .5s;
     position:absolute;
     width: 30%;
     height: 50%;
