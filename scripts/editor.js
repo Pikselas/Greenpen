@@ -15,6 +15,23 @@ function CreateImgDiv(ID)
     return NewImgDivSec;
 }
 
+function CreateVideoObj(ID,path)
+{
+    let NewVidDiv = document.createElement("div");
+    NewVidDiv.id = ID;
+    NewVidDiv.style.top = String(Math.floor((Math.random() * 40) + 1)) + "%";
+    NewVidDiv.style.left = String(Math.floor((Math.random() * 60) + 1)) + "%";
+    NewVidDiv.className = "MainSecChild_VIDDIV";
+    NewVidDiv.draggable = true;
+    NewVidDiv.setAttribute("ondragstart","OnDragStart(event)");
+
+    let NewVid = document.createElement("video");
+    NewVid.src = path;
+    NewVid.controls = true;
+    NewVidDiv.appendChild(NewVid);
+    return NewVidDiv;
+}
+
 document.body.onload = ()=>
 {
     //verifying user
@@ -36,9 +53,15 @@ document.body.onload = ()=>
             {
                PerformAjaxRequest("GET",{},biscuit["active_project"],"",true,(data)=>{
                     let ProjectObj = JSON.parse(data);
+                    let MainSection = document.getElementById("MainSection");
+                    Object.keys(ProjectObj["FILE_LIST_S"]["VIDEO_LIST"]).forEach(async (VideoID)=>{
+                        let VidSec = CreateVideoObj(VideoID,USER_FOLDER + ProjectObj["FILE_LIST_S"]["VIDEO_LIST"][VideoID]["path"]);
+                        MainSection.appendChild(VidSec);
+                    });
+                    
                     Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"]).forEach(async (ImageSectionID)=>{
                         let ImageSection = CreateImgDiv(ImageSectionID);
-                        document.getElementById("MainSection").appendChild(ImageSection);
+                        MainSection.appendChild(ImageSection);
                         Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID]).forEach((ImageID)=>{
                             let NewImg = document.createElement("img");
                             NewImg.id = ImageID;
@@ -61,8 +84,12 @@ function OnDragStart(ev)
 function onDrop(ev)
 {
     let Obj = document.getElementById(ev.dataTransfer.getData("Item"));
+    document.getElementById("MainSection").removeChild(Obj);
+    document.getElementById("MainSection").appendChild(Obj);
+    setTimeout(()=>{
     Obj.style.top = ev.layerY - Number(ev.dataTransfer.getData("Ypos")) + "px";
     Obj.style.left = ev.layerX - Number(ev.dataTransfer.getData("Xpos")) + "px";
+    },1);
 }
 function onDragOver(ev)
 {

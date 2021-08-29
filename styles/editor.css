@@ -27,10 +27,25 @@ body
 {
     width: 100%;
 }
+#MainSection .MainSecChild_VIDDIV
+{
+    transition: left .5s,top .5s;
+    resize: both;
+    overflow: hidden;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+}
+#MainSection .MainSecChild_VIDDIV video
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+}
 #MainSection
 {
     position: absolute;
-    width: 95%;
+    width: 99%;
     height: 90%;
     overflow: scroll;
 }

@@ -160,6 +160,7 @@ function DeleteFolder(FolderTitleDiv)
     else
     {
         FolderTitleDiv.parentElement.parentElement.removeChild(FolderTitleDiv.parentElement);
+        SelectedFolder = null;
     }
 }
 //triggers when clicked on a file name from file panel
@@ -178,7 +179,7 @@ function OnDblClickFile(ev)
    {
        case "JSON":
            document.cookie = `active_project=${USER_FOLDER + Path}`;
-           window.location = "editor.html";
+           window.open("editor.html");
          break;
    }
 }
