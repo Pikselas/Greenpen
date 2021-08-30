@@ -1,3 +1,5 @@
+ 
+ var ProjectJsonData = null;
 function CreateImgDiv(ID)
 {
     let NewImgDivSec = document.createElement("div");
@@ -53,6 +55,7 @@ document.body.onload = ()=>
             {
                PerformAjaxRequest("GET",{},biscuit["active_project"],"",true,(data)=>{
                     let ProjectObj = JSON.parse(data);
+                    ProjectJsonData = ProjectObj;
                     let MainSection = document.getElementById("MainSection");
                     Object.keys(ProjectObj["FILE_LIST_S"]["VIDEO_LIST"]).forEach(async (VideoID)=>{
                         let VidSec = CreateVideoObj(VideoID,USER_FOLDER + ProjectObj["FILE_LIST_S"]["VIDEO_LIST"][VideoID]["path"]);
@@ -87,11 +90,19 @@ function onDrop(ev)
     document.getElementById("MainSection").removeChild(Obj);
     document.getElementById("MainSection").appendChild(Obj);
     setTimeout(()=>{
-    Obj.style.top = ev.layerY - Number(ev.dataTransfer.getData("Ypos")) + "px";
-    Obj.style.left = ev.layerX - Number(ev.dataTransfer.getData("Xpos")) + "px";
+    Obj.style.top = ev.clientY - Number(ev.dataTransfer.getData("Ypos")) + "px";
+    Obj.style.left = ev.clientX - Number(ev.dataTransfer.getData("Xpos")) + "px";
     },1);
 }
 function onDragOver(ev)
 {
     ev.preventDefault();
 }
+document.getElementById("newImgFrameButton").onclick = ()=>{
+    let NewImgFrameID = (Math.random() + 1).toString(36).substring(2);
+    ProjectJsonData["FILE_LIST_S"]["IMAGE_LIST_S"][NewImgFrameID] = {};
+    document.getElementById("MainSection").appendChild(CreateImgDiv(NewImgFrameID));
+};
+document.getElementById("saveProject").onclick = ()=>{
+
+};

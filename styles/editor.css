@@ -49,3 +49,13 @@ body
     height: 90%;
     overflow: scroll;
 }
+#ToolSection
+{
+    width: 99%;
+    height: 8%;
+    position: absolute;
+    top: 92%;
+    background-color: #01051e;
+    display:flex;
+    align-items: center;
+}

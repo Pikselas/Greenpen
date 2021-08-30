@@ -33,22 +33,30 @@
 
     </div>
     <script>
+        function fk(ev)
+        {
+            console.log(ev);
+        }
         function OnDragStart(ev)
         {
             ev.dataTransfer.setData("Item",ev.target.id);
         }
         function onDrop(ev)
         {
-            let Obj = document.getElementById(ev.dataTransfer.getData("Item"));
-            //ev.target.removeChild(Obj);
-            Obj.style.top = ev.layerY + "px";
-            Obj.style.left = ev.layerX + "px";
-            //ev.target.appendChild(Obj);
-            console.log(ev);
+            // let Obj = document.getElementById(ev.dataTransfer.getData("Item"));
+            // //ev.target.removeChild(Obj);
+            // Obj.style.top = ev.layerY + "px";
+            // Obj.style.left = ev.layerX + "px";
+            // //ev.target.appendChild(Obj);
+            // console.log(ev);
         }
         function onDragOver(ev)
         {
-            ev.preventDefault();
+            //ev.preventDefault();
+            let Obj = document.getElementById(ev.dataTransfer.getData("Item"));
+            Obj.style.top = String(ev.layerY) + "px";
+            Obj.style.left = String(ev.layerX) + "px";
+            
         }
     </script>
 </body>
