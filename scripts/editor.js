@@ -9,8 +9,11 @@ function CreateImgDiv(ID)
     NewImgDivSec.className = "MainSecChild_IMGDIV";
     NewImgDivSec.draggable = true;
     NewImgDivSec.setAttribute("ondragstart","OnDragStart(event)");
+    NewImgDivSec.setAttribute("ondrop","onImageDrop(event)");
+    NewImgDivSec.setAttribute("ondragover","onImageDragOver(event)");
 
     let NewImgDivContainer = document.createElement("div");
+    NewImgDivContainer.className = "ImageContainer";
     
     NewImgDivSec.appendChild(NewImgDivContainer)
 
@@ -68,6 +71,9 @@ document.body.onload = ()=>
                         Object.keys(ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID]).forEach((ImageID)=>{
                             let NewImg = document.createElement("img");
                             NewImg.id = ImageID;
+                            NewImg.className = "ImgObj";
+                            NewImg.draggable = true;
+                            NewImg.setAttribute("ondragstart","onImageDragStart(event)");
                             NewImg.src = USER_FOLDER + ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID][ImageID]["path"];
                             ImageSection.children[0].appendChild(NewImg);
                         });
@@ -87,17 +93,52 @@ function OnDragStart(ev)
 function onDrop(ev)
 {
     let Obj = document.getElementById(ev.dataTransfer.getData("Item"));
-    document.getElementById("MainSection").removeChild(Obj);
-    document.getElementById("MainSection").appendChild(Obj);
-    setTimeout(()=>{
-    Obj.style.top = ev.clientY - Number(ev.dataTransfer.getData("Ypos")) + "px";
-    Obj.style.left = ev.clientX - Number(ev.dataTransfer.getData("Xpos")) + "px";
-    },1);
+    if(Obj.tagName == "DIV")
+    {
+        document.getElementById("MainSection").removeChild(Obj);
+        document.getElementById("MainSection").appendChild(Obj);
+        setTimeout(()=>{
+            Obj.style.top = ev.clientY - Number(ev.dataTransfer.getData("Ypos")) + "px";
+            Obj.style.left = ev.clientX - Number(ev.dataTransfer.getData("Xpos")) + "px";
+        },1);
+    }
 }
 function onDragOver(ev)
 {
     ev.preventDefault();
 }
+function onImageDragStart(ev)
+{
+    ev.dataTransfer.setData("ImageItem",ev.target.id);
+}
+function onImageDragOver(ev)
+{
+    ev.preventDefault();
+}
+function onImageDrop(ev)
+{
+    console.log(ev);
+    let Target = null;
+    switch(ev.target.className)
+    {
+        case "ImageContainer":
+            Target =  ev.target;
+            break;
+        case "ImgObj":
+            Target = ev.target.parentElement;
+            break;
+        case "MainSecChild_IMGDIV":
+            Target = ev.target.children[0];
+    }
+    if(Target)
+    {
+     Target.appendChild(document.getElementById(ev.dataTransfer.getData("ImageItem")));
+    }
+}
+window.ondrop = (ev)=>{
+    ev.preventDefault();
+};
+
 document.getElementById("newImgFrameButton").onclick = ()=>{
     let NewImgFrameID = (Math.random() + 1).toString(36).substring(2);
     ProjectJsonData["FILE_LIST_S"]["IMAGE_LIST_S"][NewImgFrameID] = {};
