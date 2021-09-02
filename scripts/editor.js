@@ -132,18 +132,24 @@ function onImageDrop(ev)
     }
     if(Target)
     {
-     Target.appendChild(document.getElementById(ev.dataTransfer.getData("ImageItem")));
+     let ImgObj = document.getElementById(ev.dataTransfer.getData("ImageItem"));
+     ProjectJsonData["FILE_LIST_S"]["IMAGE_LIST_S"][Target.parentElement.id][ImgObj.id] = ProjectJsonData["FILE_LIST_S"]["IMAGE_LIST_S"][ImgObj.parentElement.parentElement.id][ImgObj.id];
+     delete ProjectJsonData["FILE_LIST_S"]["IMAGE_LIST_S"][ImgObj.parentElement.parentElement.id][ImgObj.id];
+     Target.appendChild(ImgObj);
     }
 }
 window.ondrop = (ev)=>{
     ev.preventDefault();
 };
-
+//adding new image frame
 document.getElementById("newImgFrameButton").onclick = ()=>{
     let NewImgFrameID = (Math.random() + 1).toString(36).substring(2);
     ProjectJsonData["FILE_LIST_S"]["IMAGE_LIST_S"][NewImgFrameID] = {};
     document.getElementById("MainSection").appendChild(CreateImgDiv(NewImgFrameID));
 };
+//saving project
 document.getElementById("saveProject").onclick = ()=>{
-
+    PerformAjaxRequest("GET",{},`../server/editor.php?ACTION_TYPE=${"SAVE_PROJECT"}&PROJECT_JSON=${JSON.stringify(ProjectJsonData)}`,"",true,(data)=>{
+        console.log(data);
+    });
 };
