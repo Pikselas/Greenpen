@@ -178,8 +178,10 @@ function OnDblClickFile(ev)
    switch(Type)
    {
        case "JSON":
-           document.cookie = `active_project=${USER_FOLDER + Path}`;
+           document.cookie = `active_project=${USER_FOLDER + Path};path=/Greenpen`;
            window.open("editor.html");
+       default:
+        window.open(USER_FOLDER + Path);
          break;
    }
 }
