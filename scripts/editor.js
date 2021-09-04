@@ -1,5 +1,22 @@
  
  var ProjectJsonData = null;
+
+ function OnImgFrmDel(ev)
+ {
+    let ImageLists = ProjectJsonData["FILE_LIST_S"]["IMAGE_LIST_S"][ev.target.parentElement.id];
+    delete ProjectJsonData["FILE_LIST_S"]["IMAGE_LIST_S"][ev.target.parentElement.id];
+    console.log(ImageLists);
+    ev.target.parentElement.style.opacity = 0;
+    setTimeout(()=>{document.getElementById("MainSection").removeChild(ev.target.parentElement)},500);
+ }
+
+ function OnVidFrameDel(ev)
+ {
+    let VideoItem = ProjectJsonData["FILE_LIST_S"]["VIDEO_LIST"][ev.target.parentElement.id];
+    delete ProjectJsonData["FILE_LIST_S"]["VIDEO_LIST"][ev.target.parentElement.id];
+    ev.target.parentElement.style.opacity = 0;
+    setTimeout(()=>{document.getElementById("MainSection").removeChild(ev.target.parentElement)},500);
+ }
 function CreateImgDiv(ID)
 {
     let NewImgDivSec = document.createElement("div");
@@ -12,10 +29,22 @@ function CreateImgDiv(ID)
     NewImgDivSec.setAttribute("ondrop","onImageDrop(event)");
     NewImgDivSec.setAttribute("ondragover","onImageDragOver(event)");
 
+    let ButtonDelete = document.createElement("button");
+    ButtonDelete.innerHTML = "X";
+    ButtonDelete.className = "deleteButton";
+    ButtonDelete.setAttribute("onclick","OnImgFrmDel(event)");
+
+    let ButtonAdd = document.createElement("button");
+    ButtonAdd.innerHTML = "+";
+    ButtonAdd.className = "addButton";
+
+
     let NewImgDivContainer = document.createElement("div");
     NewImgDivContainer.className = "ImageContainer";
-    
-    NewImgDivSec.appendChild(NewImgDivContainer)
+
+    NewImgDivSec.appendChild(ButtonDelete);
+    NewImgDivSec.appendChild(ButtonAdd);
+    NewImgDivSec.appendChild(NewImgDivContainer);
 
     return NewImgDivSec;
 }
@@ -29,6 +58,13 @@ function CreateVideoObj(ID,path)
     NewVidDiv.className = "MainSecChild_VIDDIV";
     NewVidDiv.draggable = true;
     NewVidDiv.setAttribute("ondragstart","OnDragStart(event)");
+
+    let ButtonDelete = document.createElement("button");
+    ButtonDelete.innerHTML = "X";
+    ButtonDelete.className = "deleteButton";
+    ButtonDelete.setAttribute("onclick","OnVidFrameDel(event)");
+
+    NewVidDiv.appendChild(ButtonDelete);
 
     let NewVid = document.createElement("video");
     NewVid.src = path;
@@ -75,7 +111,7 @@ document.body.onload = ()=>
                             NewImg.draggable = true;
                             NewImg.setAttribute("ondragstart","onImageDragStart(event)");
                             NewImg.src = USER_FOLDER + ProjectObj["FILE_LIST_S"]["IMAGE_LIST_S"][ImageSectionID][ImageID]["path"];
-                            ImageSection.children[0].appendChild(NewImg);
+                            ImageSection.children[2].appendChild(NewImg);
                         });
                     });
 
@@ -145,7 +181,8 @@ window.ondrop = (ev)=>{
 document.getElementById("newImgFrameButton").onclick = ()=>{
     let NewImgFrameID = (Math.random() + 1).toString(36).substring(2);
     ProjectJsonData["FILE_LIST_S"]["IMAGE_LIST_S"][NewImgFrameID] = {};
-    document.getElementById("MainSection").appendChild(CreateImgDiv(NewImgFrameID));
+    let ImageFrame = CreateImgDiv(NewImgFrameID);
+    document.getElementById("MainSection").appendChild(ImageFrame);
 };
 //saving project
 document.getElementById("saveProject").onclick = ()=>{

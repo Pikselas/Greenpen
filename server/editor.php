@@ -11,9 +11,12 @@
         switch($_GET["ACTION_TYPE"])
         {
             case "SAVE_PROJECT":
-                    if(isset($_GET["PROJECT_JSON"]))
+                    if(isset($_GET["PROJECT_JSON"]) && isset($_COOKIE["active_project"]))
                     {
-                        print_r($_COOKIE);
+                      if(file_exists($_COOKIE["active_project"]))
+                      {
+                        file_put_contents($_COOKIE["active_project"],$_GET["PROJECT_JSON"]);
+                      }
                     }
                 break;
         }
